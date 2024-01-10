@@ -1,7 +1,7 @@
 <?php
 namespace Core;
 
-class ConfigController
+class ConfigController extends Config
 {
 
     private string $url;
@@ -18,6 +18,8 @@ class ConfigController
 
     public function __construct()
     {
+        $this->config();
+        
         $filter = filter_input(INPUT_GET, 'url', FILTER_DEFAULT);
         if (! empty($filter)) {
             $this->url = $filter;
@@ -27,11 +29,10 @@ class ConfigController
             if (isset($this->urlArray[0])) {
                 $this->urlController = $this->slugController($this->urlArray[0]); // envio de alguma página na url
             } else {
-                $this->urlController = $this->slugController("Home"); // se não for enviada a página acessa a padrão
+                $this->urlController = $this->slugController(CONTROLLERERRO); // se não for enviada a página acessa a padrão
             }
         } else {
-            echo "url vazia <br>";
-            $this->urlController = $this->slugController("Home");
+            $this->urlController = $this->slugController(CONTROLLER);
         }
     }
     
