@@ -27,18 +27,18 @@ class ConfigController
             if (isset($this->urlArray[0])) {
                 $this->urlController = $this->slugController($this->urlArray[0]); // envio de alguma página na url
             } else {
-                $this->urlController = "Home"; // se não for enviada a página acessa a padrão
+                $this->urlController = $this->slugController("Home"); // se não for enviada a página acessa a padrão
             }
         } else {
             echo "url vazia <br>";
-            $this->urlController = "Home";
+            $this->urlController = $this->slugController("Home");
         }
-
-        echo "Controller: {$this->urlController} <br>";
     }
     
     public function loadPage(){
-        echo "carregar página/controller <br>";
+        $classLoad = "\\Sts\\Controllers\\". $this->urlController;
+        $classPage = new $classLoad();
+        $classPage->index();
     }
 
     private function clearUrl()

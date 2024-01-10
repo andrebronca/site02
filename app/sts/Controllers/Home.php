@@ -1,5 +1,6 @@
 <?php
-namespace app\sts\Controllers;
+
+namespace Sts\Controllers; 
 
 class Home {
     public function index(){
