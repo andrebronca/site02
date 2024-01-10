@@ -1,0 +1,13 @@
+{
+	"description" : "PHP OO",
+	"authors" : [{
+			"name" : "André R. Bronca",
+			"email" : "bronca.andre@gmail.com"
+		}
+	],
+	"autoload" : {
+		"psr-4" : {
+			"Core\\" : "core"
+		}
+	}
+}
