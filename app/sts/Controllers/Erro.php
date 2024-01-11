@@ -2,8 +2,12 @@
 namespace Sts\Controllers;
 
 class Erro{
-    public function index(){
-        echo "index da página de Erro <br>";
+    private array|string|null $dados;
+    
+    public function index(): void{
+        $this->dados = null;
+        $loadView = new \Core\ConfigView("erro/erro", $this->dados);
+        $loadView->loadView();
     }
 }
 

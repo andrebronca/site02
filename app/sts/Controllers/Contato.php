@@ -2,8 +2,13 @@
 namespace Sts\Controllers;
 
 class Contato{
+    //$dados pode ser: array, string ou null
+    private array|string|null $dados;
+    
     public function index(){
-        echo "index da página de contato <br>";
+        $this->dados = "Mensagem enviada com sucesso!";
+        $loadView = new \Core\ConfigView("contato/contato", $this->dados);
+        $loadView->loadView();
     }
 }
 

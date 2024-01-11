@@ -18,6 +18,7 @@ class ConfigController extends Config
 
     public function __construct()
     {
+        //instancia a classe herdada para obter as constantes
         $this->config();
         
         $filter = filter_input(INPUT_GET, 'url', FILTER_DEFAULT);
@@ -29,6 +30,7 @@ class ConfigController extends Config
             if (isset($this->urlArray[0])) {
                 $this->urlController = $this->slugController($this->urlArray[0]); // envio de alguma página na url
             } else {
+                //usando a constante herdada
                 $this->urlController = $this->slugController(CONTROLLERERRO); // se não for enviada a página acessa a padrão
             }
         } else {
@@ -36,13 +38,13 @@ class ConfigController extends Config
         }
     }
     
-    public function loadPage(){
+    public function loadPage(): void{
         $classLoad = "\\Sts\\Controllers\\". $this->urlController;
         $classPage = new $classLoad();
         $classPage->index();
     }
 
-    private function clearUrl()
+    private function clearUrl(): void
     {
         // eliminar tag na url
         $this->url = strip_tags($this->url);
@@ -56,7 +58,7 @@ class ConfigController extends Config
         $this->url = strtr(utf8_decode($this->url), utf8_decode($this->format['a']), $this->format['b']);
     }
 
-    private function slugController($slugController)
+    private function slugController(string $slugController): string
     {
         // converter para minúsculo
         $this->urlSlugController = strtolower($slugController);

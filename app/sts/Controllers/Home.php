@@ -3,8 +3,13 @@
 namespace Sts\Controllers; 
 
 class Home {
+    
+    private array|string|null $dados;
+    
     public function index(){
-        echo "index da página de Home <br>";
+        $this->dados = [];
+        $loadView = new \Core\ConfigView("home/home", $this->dados);
+        $loadView->loadView();
     }
 }
 
