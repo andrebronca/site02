@@ -9,5 +9,10 @@ abstract class Config {
         define('CONTROLLERERRO','Erro');
         define('EMAILADM','bronca.andre@gmail.com');
     }
+    
+    /*
+     * Documentação sobre o .htaccess
+     * https://httpd.apache.org/docs/2.4/rewrite/flags.html
+     */
 }
 
