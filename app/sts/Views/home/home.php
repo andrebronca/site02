@@ -6,4 +6,5 @@ if(!defined('C7E3L8K9E5')){
     header("Location: /site02/");  //redireciona para a raiz do site
 }
 
-echo "View: Home";
+echo "View: Home <br>";
+var_dump($this->dados);
